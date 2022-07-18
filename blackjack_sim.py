@@ -7,6 +7,7 @@ import requests
 import ascii_magic
 import random
 import os
+import time
 from colorama import Fore, Back, Style
 colorama.init(autoreset=True)
 
@@ -84,9 +85,14 @@ class BlackJack():
 black = BlackJack()
 def main():
     black.welcome_screen()
+    time.sleep(1)
     prompt = input(f"{Fore.RED}{Style.BRIGHT}Welcome to BlackJack! Press 1 for a seat. ")
     if prompt == '1':
-        print(f"\nDealer Hand: {black.dealer_hand()}")
+        time.sleep(1)
+        seat = ascii_magic.from_image_file('seat.jpg', columns = 50)
+        ascii_magic.to_terminal(seat)
+        time.sleep(2)
+        print(f"{Fore.RED}{Style.BRIGHT}\nDealer Hand: {black.dealer_hand()}")
         print(f"{Fore.WHITE}{Style.BRIGHT}\nYour Hand: {black.player_hand()}")
         black.dealer_hand()
         black.player_hand()
